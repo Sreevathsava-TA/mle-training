@@ -1,0 +1,6 @@
+# Ignore Python bytecode files
+*.pyc
+__pycache__/
+
+# Ignore CSV data files
+*.csv
