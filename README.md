@@ -16,3 +16,14 @@ The following techniques have been used:
 
 ## To excute the script
 python < scriptname.py >
+## Create an environment from .yml file
+conda env create -f env.yml
+
+Here I have created an enviroment from yml file that I have created before
+
+<img width="1440" alt="Screenshot 2024-10-04 at 8 47 00 PM" src="https://github.com/user-attachments/assets/d64f993f-1691-41ab-972f-c8103ab0ec21">
+<img width="1440" alt="Screenshot 2024-10-04 at 8 55 24 PM" src="https://github.com/user-attachments/assets/dbbfcbd6-0840-4532-942d-291ac2ec55ee">
+
+This is the output of the code:
+
+<img width="1439" alt="Screenshot 2024-10-04 at 7 33 58 PM" src="https://github.com/user-attachments/assets/5eb0109c-f365-4b85-bac6-4605158d07b7">
