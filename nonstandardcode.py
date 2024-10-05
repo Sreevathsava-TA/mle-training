@@ -1,21 +1,26 @@
 import os
 import tarfile
+
 import numpy as np
 import pandas as pd
+from scipy.stats import randint
 from six.moves import urllib
-from sklearn.model_selection import train_test_split, StratifiedShuffleSplit, RandomizedSearchCV, GridSearchCV
+from sklearn.ensemble import RandomForestRegressor
 from sklearn.impute import SimpleImputer
 from sklearn.linear_model import LinearRegression
+from sklearn.metrics import mean_absolute_error, mean_squared_error
+from sklearn.model_selection import (
+    GridSearchCV,
+    RandomizedSearchCV,
+    StratifiedShuffleSplit,
+    train_test_split,
+)
 from sklearn.tree import DecisionTreeRegressor
-from sklearn.ensemble import RandomForestRegressor
-from sklearn.metrics import mean_squared_error, mean_absolute_error
-from scipy.stats import randint
 
 DOWNLOAD_ROOT = "https://raw.githubusercontent.com/ageron/handson-ml/master/"
 HOUSING_PATH = os.path.join("datasets", "housing")
-HOUSING_URL = (
-    DOWNLOAD_ROOT + "datasets/housing/housing.tgz"
-)
+HOUSING_URL = DOWNLOAD_ROOT + "datasets/housing/housing.tgz"
+
 
 def fetch_housing_data(housing_url=HOUSING_URL, housing_path=HOUSING_PATH):
     os.makedirs(housing_path, exist_ok=True)
@@ -138,7 +143,9 @@ rnd_search = RandomizedSearchCV(
 rnd_search.fit(housing_prepared, housing_labels)
 
 cvres = rnd_search.cv_results_
-for mean_score, params in zip(cvres["mean_test_score"], cvres["params"]):
+for mean_score, params in zip(
+    cvres["mean_test_score"], cvres["params"]
+    ):
     print(np.sqrt(-mean_score), params)
 
 
@@ -159,7 +166,9 @@ grid_search.fit(housing_prepared, housing_labels)
 
 grid_search.best_params_
 cvres = grid_search.cv_results_
-for mean_score, params in zip(cvres["mean_test_score"], cvres["params"]):
+for mean_score, params in zip(
+    cvres["mean_test_score"], cvres["params"]
+    ):
     print(np.sqrt(-mean_score), params)
 
 feature_importances = grid_search.best_estimator_.feature_importances_
