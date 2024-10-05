@@ -88,8 +88,12 @@ corr_matrix = housing.corr()
 corr_matrix["median_house_value"].sort_values(ascending=False)
 
 housing["rooms_per_household"] = housing["total_rooms"] / housing["households"]
-housing["bedrooms_per_room"] = housing["total_bedrooms"] / housing["total_rooms"]
-housing["population_per_household"] = housing["population"] / housing["households"]
+housing["bedrooms_per_room"] = (
+    housing["total_bedrooms"] / housing["total_rooms"]
+)
+housing["population_per_household"] = (
+    housing["population"] / housing["households"]
+)
 
 housing = strat_train_set.drop("median_house_value", axis=1)
 housing_labels = strat_train_set["median_house_value"].copy()
@@ -100,7 +104,9 @@ imputer.fit(housing_num)
 X = imputer.transform(housing_num)
 
 housing_tr = pd.DataFrame(X, columns=housing_num.columns, index=housing.index)
-housing_tr["rooms_per_household"] = housing_tr["total_rooms"] / housing_tr["households"]
+housing_tr["rooms_per_household"] = (
+    housing_tr["total_rooms"] / housing_tr["households"]
+)
 housing_tr["bedrooms_per_room"] = (
     housing_tr["total_bedrooms"] / housing_tr["total_rooms"]
 )
@@ -143,9 +149,7 @@ rnd_search = RandomizedSearchCV(
 rnd_search.fit(housing_prepared, housing_labels)
 
 cvres = rnd_search.cv_results_
-for mean_score, params in zip(
-    cvres["mean_test_score"], cvres["params"]
-    ):
+for mean_score, params in zip(cvres["mean_test_score"], cvres["params"]):
     print(np.sqrt(-mean_score), params)
 
 
@@ -166,9 +170,7 @@ grid_search.fit(housing_prepared, housing_labels)
 
 grid_search.best_params_
 cvres = grid_search.cv_results_
-for mean_score, params in zip(
-    cvres["mean_test_score"], cvres["params"]
-    ):
+for mean_score, params in zip(cvres["mean_test_score"], cvres["params"]):
     print(np.sqrt(-mean_score), params)
 
 feature_importances = grid_search.best_estimator_.feature_importances_
