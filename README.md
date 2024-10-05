@@ -82,5 +82,3 @@ Below are some sample outputs from the model training:
 <img width="1440" alt="Model Output 2" src="https://github.com/user-attachments/assets/dbbfcbd6-0840-4532-942d-291ac2ec55ee">
 
 ---
-
-This cleaned-up `README.md` should be more concise and easier to follow. Let me know if you'd like to add or modify anything further!
