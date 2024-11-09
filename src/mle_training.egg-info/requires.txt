@@ -1,0 +1,12 @@
+numpy
+pandas
+scikit-learn
+pyyaml
+black
+isort
+flake8
+
+[dev]
+pytest
+sphinx
+black

@@ -1,0 +1,4 @@
+[console_scripts]
+evaluate-model = project_name.model_training:evaluate_model
+fetch-data = project_name:fetch_housing_data
+train-model = project_name.model_training:train_model

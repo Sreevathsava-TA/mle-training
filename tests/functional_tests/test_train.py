@@ -52,7 +52,7 @@ def test_script_runs_successfully(sample_data_path, output_dir):
 
     # Verify that the script runs successfully
     assert result.returncode == 0
-    assert "Models trained and saved" in result.stdout
+    assert "Models trained and saved" in result.stderr
 
 def test_model_files_exist(output_dir):
     """Check that all expected model files were created."""
