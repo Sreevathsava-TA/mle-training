@@ -1,6 +1,7 @@
 # Ignore Python bytecode files
 *.pyc
 __pycache__/
-
+#Ignore build folder
+build/
 # Ignore CSV data files
 *.csv
