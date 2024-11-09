@@ -1,5 +1,3 @@
-Here is a clean and improved version of your `README.md` file for the housing price prediction project:
-
 ---
 
 # Housing Price Prediction
@@ -54,21 +52,86 @@ https://raw.githubusercontent.com/ageron/handson-ml/master/datasets/housing/hous
 
 You can also manually download and extract the data using this link if needed.
 
-## Running the Code
-
-Once everything is set up, you can run the script to train the models and evaluate their performance:
-
+## 5. Made the Code Packageable
 ```bash
-python nonstandardcode.py
+
+repo-name/
+├── src/
+│   └── your_package/
+│       ├── __init__.py
+│       ├── ingest_data.py
+│       ├── train.py
+│       └── score.py
+├── tests/
+├── README.md
+├── env.yaml
+├── setup.py
+```
+## Running the Scripts
+
+### Data Ingestion: Run ingest_data.py 
+```bash
+python src/ingest_data.py
+```
+The data is saved in data folder
+### Trining the models: Run train.py
+```bash
+python src/train.py
+```
+The trained models will be saved in the folder named artifacts
+### Score: Run score.py
+```bash
+python src/score.py
+```
+The score is saved in the results folder
+
+## Running tests
+
+### Unit tests
+
+#### Test data ingestion : Run test_ingest_data
+```bash 
+pytest -v tests/unit_tests/test_ingest_data.py
+```
+#### Test trained models : Run test_train
+```bash 
+pytest -v tests/unit_tests/test_train.py
+```
+#### Test data ingestion : Run test_score
+```bash 
+pytest -v tests/unit_tests/test_score.py
 ```
 
-This script will:
-- Download the dataset (if not already downloaded)
-- Clean and preprocess the data
-- Generate relevant features and handle missing values
-- Train Linear Regression, Decision Tree, and Random Forest models
-- Evaluate the models using Mean Squared Error (MSE)
+### Functional tests
 
+#### Test data ingestion : Run test_ingest_data
+```bash 
+pytest -v tests/functional_tests/test_ingest_data.py
+```
+#### Test trained models : Run test_train
+```bash 
+pytest -v tests/functional_tests/test_train.py
+```
+#### Test data ingestion : Run test_score
+```bash 
+pytest -v tests/functional_tests/test_score.py
+```
+
+## Generate Sphinx build
+
+### Create a folder named docs 
+```bash
+mkdir docs
+cd docs
+```
+### start the spnix 
+```bash
+sphinx-quickstart
+```
+### Generate html
+``` bash
+make html
+```
 ## Model Performance
 
 The final models are evaluated using Mean Squared Error (MSE) to assess prediction accuracy. The Random Forest model typically yields better performance due to its ability to capture complex relationships in the data.
