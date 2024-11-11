@@ -5,6 +5,8 @@ __pycache__/
 build/
 # Ignore CSV data files
 *.csv
+#Ignore rst files
+*.rst
 #Ignore result folder
 result/
 #Ignore temp_results folder
