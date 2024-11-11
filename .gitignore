@@ -15,3 +15,5 @@ src/mle_training.egg-info
 data/
 #Ignore dist folder
 dist/
+#Ignore build folder
+docs/build/
