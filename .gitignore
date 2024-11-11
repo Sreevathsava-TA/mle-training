@@ -5,3 +5,13 @@ __pycache__/
 build/
 # Ignore CSV data files
 *.csv
+#Ignore result folder
+result/
+#Ignore temp_results folder
+temp_results/
+#Ignore mle_training,egg-info
+src/mle_training.egg-info
+#Ignore data folder
+data/
+#Ignore dist folder
+dist/
