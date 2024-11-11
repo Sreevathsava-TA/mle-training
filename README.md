@@ -51,8 +51,12 @@ https://raw.githubusercontent.com/ageron/handson-ml/master/datasets/housing/hous
 ```
 
 You can also manually download and extract the data using this link if needed.
-
-## 5. Made the Code Packageable
+## 5.How to setup a virtual environment
+```bash 
+conda env create -f environment.yaml
+conda activate env
+```
+## 6. Made the Code Packageable
 ```bash
 
 repo-name/
@@ -67,13 +71,26 @@ repo-name/
 ├── env.yaml
 ├── setup.py
 ```
+
+## Installing package
+```bash 
+python setup.py sdist bdist_wheel
+pip install .
+```
 ## Running the Scripts
 
 ### Data Ingestion: Run ingest_data.py 
 ```bash
 python src/ingest_data.py
 ```
-The data is saved in data folder
+By default the datsets are saved into the data folder
+
+By using the below code we can save the datasets in the different folder
+
+```bash 
+python src/mle_training/ingest_data.py --output_path folder_name
+```
+
 ### Trining the models: Run train.py
 ```bash
 python src/train.py
@@ -118,18 +135,8 @@ pytest -v tests/functional_tests/test_score.py
 ```
 
 ## Generate Sphinx build
-
-### Create a folder named docs 
-```bash
-mkdir docs
-cd docs
-```
-### start the spnix 
-```bash
-sphinx-quickstart
-```
-### Generate html
 ``` bash
+cd docs
 make html
 ```
 ## Model Performance
