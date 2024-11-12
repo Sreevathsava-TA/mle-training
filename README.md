@@ -1,5 +1,3 @@
-Here is a clean and improved version of your `README.md` file for the housing price prediction project:
-
 ---
 
 # Housing Price Prediction
@@ -53,22 +51,94 @@ https://raw.githubusercontent.com/ageron/handson-ml/master/datasets/housing/hous
 ```
 
 You can also manually download and extract the data using this link if needed.
-
-## Running the Code
-
-Once everything is set up, you can run the script to train the models and evaluate their performance:
-
+## 5.How to setup a virtual environment
+```bash 
+conda env create -f environment.yaml
+conda activate env
+```
+## 6. Made the Code Packageable
 ```bash
-python nonstandardcode.py
+
+repo-name/
+├── src/
+│   └── your_package/
+│       ├── __init__.py
+│       ├── ingest_data.py
+│       ├── train.py
+│       └── score.py
+├── tests/
+├── README.md
+├── env.yaml
+├── setup.py
 ```
 
-This script will:
-- Download the dataset (if not already downloaded)
-- Clean and preprocess the data
-- Generate relevant features and handle missing values
-- Train Linear Regression, Decision Tree, and Random Forest models
-- Evaluate the models using Mean Squared Error (MSE)
+## Installing package
+```bash 
+python setup.py sdist bdist_wheel
+pip install .
+```
+## Running the Scripts
 
+### Data Ingestion: Run ingest_data.py 
+```bash
+python src/ingest_data.py
+```
+By default the datsets are saved into the data folder
+
+By using the below code we can save the datasets in the different folder
+
+```bash 
+python src/mle_training/ingest_data.py --output_path folder_name
+```
+
+### Trining the models: Run train.py
+```bash
+python src/train.py
+```
+The trained models will be saved in the folder named artifacts
+### Score: Run score.py
+```bash
+python src/score.py
+```
+The score is saved in the results folder
+
+## Running tests
+
+### Unit tests
+
+#### Test data ingestion : Run test_ingest_data
+```bash 
+pytest -v tests/unit_tests/test_ingest_data.py
+```
+#### Test trained models : Run test_train
+```bash 
+pytest -v tests/unit_tests/test_train.py
+```
+#### Test data ingestion : Run test_score
+```bash 
+pytest -v tests/unit_tests/test_score.py
+```
+
+### Functional tests
+
+#### Test data ingestion : Run test_ingest_data
+```bash 
+pytest -v tests/functional_tests/test_ingest_data.py
+```
+#### Test trained models : Run test_train
+```bash 
+pytest -v tests/functional_tests/test_train.py
+```
+#### Test data ingestion : Run test_score
+```bash 
+pytest -v tests/functional_tests/test_score.py
+```
+
+## Generate Sphinx build
+``` bash
+cd docs
+make html
+```
 ## Model Performance
 
 The final models are evaluated using Mean Squared Error (MSE) to assess prediction accuracy. The Random Forest model typically yields better performance due to its ability to capture complex relationships in the data.
